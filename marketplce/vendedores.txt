@@ -1,0 +1,2 @@
+Calle 123,1,Producto 1,Descripción del producto 1,2022-01-01;2,Producto 2,Descripción del producto 2,2022-01-02,
+Calle 123,1,Producto 1,Descripción del producto 1,2022-01-01,,,;2,Producto 2,Descripción del producto 2,2022-01-02,,,,
