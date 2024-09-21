@@ -23,23 +23,30 @@
       </HBox>
    </top>
    <center>
-      <VBox alignment="CENTER" spacing="20.0">
+      <VBox alignment="CENTER" spacing="20.0" maxWidth="200">
          <children>
-            <StackPane style="-fx-background-color: #def1ea; -fx-padding: 20;">
-               <children>
-                  <ImageView fx:id="userImageView" fitWidth="50" fitHeight="50" preserveRatio="true" />
-                  <Label text="Usuario" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
-               </children>
+            <StackPane style="-fx-background-color: #def1ea; -fx-padding: 10; -fx-border-radius: 10;">
+                  <children>
+                     <ImageView fx:id="userImageView" fitWidth="50" fitHeight="50" preserveRatio="true" />
+                     <VBox alignment="CENTER">
+                        <children>
+                              <Label text="" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
+                              <Label text="" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
+                              <Label text="" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
+                              <Label text="Usuario" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
+                        </children>
+                     </VBox>
+                  </children>
             </StackPane>
             <StackPane>
             <children>
                <Rectangle width="250" height="180" fill="#def1ea" arcWidth="10" arcHeight="10" />
                <VBox alignment="CENTER" spacing="10">
-                     <children>
-                        <Label text="Usuario" />
-                        <TextField fx:id="usernameField" prefWidth="180" />
-                        <Label text="Contraseña" />
-                        <PasswordField fx:id="passwordField" prefWidth="180" />
+                  <children>
+                     <Label text="Usuario" />
+                     <TextField fx:id="usernameField" prefWidth="180" maxWidth="180" />
+                     <Label text="Contraseña" />
+                     <PasswordField fx:id="passwordField" prefWidth="180" maxWidth="180" />
                         <HBox spacing="10" alignment="CENTER">
                            <children>
                                  <Button text="Iniciar Sesión" textFill="WHITE" style="-fx-background-color: #67b99a; -fx-cursor: hand;" />
