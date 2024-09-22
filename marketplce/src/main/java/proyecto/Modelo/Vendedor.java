@@ -49,6 +49,7 @@ public class Vendedor implements Serializable {
         return redDeContactos;
     }
 
+
     @Override
     public String toString() {
         return "Vendedor{" +

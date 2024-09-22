@@ -54,20 +54,20 @@ public class Utilidades {
         logger.log(nivel, mensaje);
     }
 
-    public void gestionarArchivos(List<String> lista1, List<String> lista2) {
-        File directorio = new File("C://Reportes_Java");
+    public void gestionarArchivos(List<Vendedor> listaVendedores, List<Producto> listaProductos) {
+        File directorio = new File("Marketplce/Reportes_Java");
         if (!directorio.exists()) {
             directorio.mkdirs();
         }
-
-        escribirListaEnArchivo(new File(directorio, "lista1.txt"), lista1);
-        escribirListaEnArchivo(new File(directorio, "lista2.txt"), lista2);
+    
+        escribirListaEnArchivo(new File(directorio, "vendedores.txt"), listaVendedores);
+        escribirListaEnArchivo(new File(directorio, "productos.txt"), listaProductos);
     }
-
-    private void escribirListaEnArchivo(File archivo, List<String> lista) {
+    
+    private void escribirListaEnArchivo(File archivo, List<?> lista) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo))) {
             for (int i = 0; i < lista.size(); i++) {
-                writer.write(lista.get(i));
+                writer.write(lista.get(i).toString());
                 writer.newLine();
                 if ((i + 1) % 10 == 0) {
                     writer.flush();
@@ -78,7 +78,7 @@ public class Utilidades {
         }
     }
     public void guardarVendedorEnArchivo(Vendedor vendedor) {
-        File directorio = new File("C://Reportes_Java");
+        File directorio = new File("Marketplce/Reportes_Java");
         if (!directorio.exists()) {
             directorio.mkdirs();
         }
@@ -102,6 +102,7 @@ public class Utilidades {
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(obj);
             }
+            escribirLog("Objeto serializado exitosamente a " + ruta, Level.INFO);
         } catch (IOException e) {
             escribirLog("Error al serializar el objeto: " + ruta, Level.SEVERE);
         }
@@ -120,6 +121,34 @@ public class Utilidades {
             escribirLog("Error al deserializar el objeto: " + ruta, Level.SEVERE);
             return null;
         }
+    }
+       // Métodos para registrar mensajes en diferentes niveles de severidad
+       public void logSevere(String mensaje) {
+        escribirLog(mensaje, Level.SEVERE);
+    }
+
+    public void logWarning(String mensaje) {
+        escribirLog(mensaje, Level.WARNING);
+    }
+
+    public void logInfo(String mensaje) {
+        escribirLog(mensaje, Level.INFO);
+    }
+
+    public void logConfig(String mensaje) {
+        escribirLog(mensaje, Level.CONFIG);
+    }
+
+    public void logFine(String mensaje) {
+        escribirLog(mensaje, Level.FINE);
+    }
+
+    public void logFiner(String mensaje) {
+        escribirLog(mensaje, Level.FINER);
+    }
+
+    public void logFinest(String mensaje) {
+        escribirLog(mensaje, Level.FINEST);
     }
 }
 
