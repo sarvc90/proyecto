@@ -11,11 +11,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import proyecto.Modelo.Utilidades;
+import proyecto.Modelo.si.Utilidades;
 
 import java.io.IOException;
-import java.util.Locale;
-import java.util.logging.Level;
+import java.net.Socket;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 
 public class PrimaryController {
     @FXML
@@ -34,8 +35,10 @@ public class PrimaryController {
     private Button registerButton;
     @FXML
     private Button changeLangButton;
-
+    
     private Utilidades utilidades = Utilidades.getInstance();
+    private static final String SERVER_ADDRESS = "localhost"; // Cambiar si es necesario
+    private static final int SERVER_PORT = 5000; // Puerto del ServidorMarketplace
 
     @FXML
     public void initialize() {
@@ -47,10 +50,10 @@ public class PrimaryController {
             String username = usernameField.getText();
             String password = passwordField.getText();
             if (authenticate(username, password)) {
-                utilidades.escribirLog(utilidades.getMensaje("login.exito"), Level.INFO);
+                System.out.println("Inicio de sesión exitoso");
                 // Redirigir a la vista de administrador o vendedor
             } else {
-                utilidades.escribirLog(utilidades.getMensaje("login.error"), Level.WARNING);
+                System.out.println("Error en el inicio de sesión");
                 // Mostrar mensaje de error
             }
         });
@@ -64,35 +67,43 @@ public class PrimaryController {
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (IOException ex) {
-                utilidades.escribirLog("Error al abrir la ventana de registro: " + ex.getMessage(), Level.SEVERE);
+                System.err.println("Error al abrir la ventana de registro: " + ex.getMessage());
             }
         });
 
         changeLangButton.setOnAction(e -> {
-            if (utilidades.getLocale().getLanguage().equals("es")) {
-                utilidades.setLocale(new Locale("en", "US"));
-            } else {
-                utilidades.setLocale(new Locale("es", "ES"));
-            }
+            // Aquí puedes implementar el cambio de idioma si es necesario
             updateTexts();
         });
     }
-    
+
     @FXML
     public void initUserImageView() {
         Image image = new Image(getClass().getResource("imagenes/usuario.png").toExternalForm());
         userImageView.setImage(image);
     }
+
     @FXML
     public void initImageView() {
         Image image = new Image(getClass().getResource("imagenes/carrito.png").toExternalForm());
         imageView.setImage(image);
     }
-    private boolean authenticate(String username, String password) {
-        // Lógica de autenticación
-        return "admin".equals(username) && "admin".equals(password);
-    }
 
+    private boolean authenticate(String username, String password) {
+        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
+            
+            oos.writeObject("AUTENTICAR");
+            oos.writeObject(username);
+            oos.writeObject(password);
+            
+            return (boolean) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error en autenticación: " + e.getMessage());
+            return false;
+        }
+    }
 
     private void updateTexts() {
         usernameField.setPromptText(utilidades.getMensaje("login.usuario"));
@@ -105,3 +116,4 @@ public class PrimaryController {
         changeLangButton.setText(utilidades.getMensaje("login.cambiarIdioma"));
     }
 }
+
