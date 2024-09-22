@@ -33,7 +33,7 @@
                               <Label text="" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
                               <Label text="" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
                               <Label text="" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
-                              <Label text="Usuario" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
+                              <Label fx:id="userLabel" text="Usuario" style="-fx-font-size: 18; -fx-text-fill: #827b7b;" />
                         </children>
                      </VBox>
                   </children>
@@ -43,14 +43,13 @@
                <Rectangle width="250" height="180" fill="#def1ea" arcWidth="10" arcHeight="10" />
                <VBox alignment="CENTER" spacing="10">
                   <children>
-                     <Label text="Usuario" />
-                     <TextField fx:id="usernameField" prefWidth="180" maxWidth="180" />
-                     <Label text="Contraseña" />
-                     <PasswordField fx:id="passwordField" prefWidth="180" maxWidth="180" />
+                     <TextField fx:id="usernameField" promptText="Nombre" style="-fx-text-fill: #827b7b;" prefWidth="180" maxWidth="180" />
+                     <PasswordField fx:id="passwordField" promptText="Contraseña" style="-fx-text-fill: #827b7b;" prefWidth="180" maxWidth="180" />
                         <HBox spacing="10" alignment="CENTER">
                            <children>
-                                 <Button text="Iniciar Sesión" textFill="WHITE" style="-fx-background-color: #67b99a; -fx-cursor: hand;" />
-                                 <Button text="Registrarse" textFill="#827b7b" style="-fx-background-color: #def1ea; -fx-cursor: hand;" />
+                                 <Button fx:id="loginButton" text="Iniciar Sesión" textFill="WHITE" style="-fx-background-color: #67b99a; -fx-cursor: hand;" />
+                                 <Button fx:id="registerButton" text="Registrarse" textFill="#827b7b" style="-fx-background-color: #def1ea; -fx-cursor: hand;" />
+                                 <Button fx:id="changeLangButton" text="Cambiar Idioma" textFill="#827b7b" style="-fx-background-color: #def1ea; -fx-cursor: hand;" />
                            </children>
                         </HBox>
                      </children>

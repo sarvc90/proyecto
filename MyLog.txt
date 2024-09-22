@@ -1,0 +1,43 @@
+2024/09/21 16:56:59 [INFO] This is an info message
+2024/09/21 16:56:59 [ERROR] This is an error message
+2024/09/21 16:57:17 [INFO] This is an info message
+2024/09/21 16:57:17 [ERROR] This is an error message
+2024/09/21 17:00:30 [INFO] This is an info message
+2024/09/21 17:00:30 [ERROR] This is an error message
+2024/09/21 17:01:31 [INFO] This is an info message
+2024/09/21 17:01:31 [ERROR] This is an error message
+2024/09/21 17:03:26 [INFO] This is an info message
+2024/09/21 17:03:26 [ERROR] This is an error message
+2024/09/21 17:07:20 [INFO] This is an info message
+2024/09/21 17:07:20 [ERROR] This is an error message
+2024/09/21 17:10:31 [INFO] This is an info message
+2024/09/21 17:10:31 [ERROR] This is an error message
+2024/09/21 17:12:19 [INFO] This is an info message
+2024/09/21 17:12:19 [ERROR] This is an error message
+2024/09/21 17:13:56 [INFO] This is an info message
+2024/09/21 17:13:56 [ERROR] This is an error message
+2024/09/21 17:21:23 [INFO] Inicio del programa
+2024/09/21 17:21:23 [ERROR] Error al leer archivo
+2024/09/21 17:21:23 [INFO] Vendedor serializado y deserializado correctamente
+2024/09/21 17:25:18 [INFO] Inicio del programa
+2024/09/21 17:25:18 [ERROR] Error al leer archivo
+2024/09/21 17:25:18 [INFO] Vendedor serializado y deserializado correctamente
+2024/09/21 17:28:02 [INFO] Inicio del programa
+2024/09/21 17:28:02 [ERROR] Error al leer archivo
+2024/09/21 17:28:02 [INFO] Vendedor serializado y deserializado correctamente
+2024/09/21 17:32:09 [INFO] Inicio de la aplicación
+2024/09/21 17:32:09 [ERROR] Error al cargar los datos
+2024/09/21 17:32:35 [INFO] Inicio de la aplicación
+2024/09/21 17:32:35 [ERROR] Error al cargar los datos
+2024/09/21 17:33:57 [INFO] Inicio de la aplicación
+2024/09/21 17:33:57 [ERROR] Error al cargar los datos
+2024/09/21 17:34:18 [INFO] Inicio de la aplicación
+2024/09/21 17:34:18 [ERROR] Error al cargar los datos
+2024/09/21 18:01:12 [INFO] Inicio del programa
+2024/09/21 18:01:12 [ERROR] Error al cargar archivo
+2024/09/21 18:02:13 [INFO] Inicio del programa
+2024/09/21 18:02:13 [ERROR] Error al cargar archivo
+2024/09/21 18:05:31 [INFO] Inicio del programa
+2024/09/21 18:05:31 [ERROR] Error al cargar archivo
+2024/09/21 18:05:35 [INFO] Inicio del programa
+2024/09/21 18:05:35 [ERROR] Error al cargar archivo

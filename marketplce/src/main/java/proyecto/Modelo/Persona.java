@@ -13,6 +13,13 @@ public abstract class Persona {
         this.cedula = cedula;
         this.contraseña = contraseña;
     }
+    public Persona() {
+        this.nombres = "";
+        this.apellidos = "";
+        this.cedula = "";
+        this.contraseña = "";
+    }
+
 
     public String getNombres() {
         return nombres;

@@ -1,54 +1,63 @@
 package proyecto.Modelo;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Vendedor extends Persona {
+public class Vendedor implements Serializable {
+    private String nombres;
+    private String apellidos;
+    private String cedula;
     private String direccion;
-    private List<Producto> productos;
-    private List<Vendedor> redDeContactos;
+    private List<String> productos;
+    private List<String> redDeContactos;
 
-    // Constructor
-    public Vendedor(String nombres, String apellidos, String cedula, String contraseña,String direccion, List<Producto> productos, List<Vendedor> redDeContactos) {
-        super(nombres, apellidos, cedula, contraseña);
+    public Vendedor(String nombres, String apellidos, String cedula, String direccion, List<String> productos, List<String> redDeContactos) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.cedula = cedula;
         this.direccion = direccion;
-        this.productos = productos;
-        this.redDeContactos = redDeContactos;
+        this.productos = new ArrayList<>(productos); // Create a new list to avoid referencing the same list
+        this.redDeContactos = new ArrayList<>(redDeContactos); // Create a new list to avoid referencing the same list
     }
 
-    // Getters
+    public Vendedor() {
+        // No-op constructor for XML serialization
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
     public String getDireccion() {
         return direccion;
     }
 
-    public List<Producto> getProductos() {
+    public List<String> getProductos() {
         return productos;
     }
 
-    public List<Vendedor> getRedDeContactos() {
+    public List<String> getRedDeContactos() {
         return redDeContactos;
     }
 
-    // Setters
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public void setRedDeContactos(List<Vendedor> redDeContactos) {
-        this.redDeContactos = redDeContactos;
-    }
     @Override
     public String toString() {
         return "Vendedor{" +
-                "nombres='" + getNombres() + '\'' +
-                ", apellidos='" + getApellidos() + '\'' +
-                ", cedula='" + getCedula() + '\'' +
+                "nombres='" + nombres + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", cedula='" + cedula + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", productos=" + productos +
                 ", redDeContactos=" + redDeContactos +
                 '}';
     }
-
 }
