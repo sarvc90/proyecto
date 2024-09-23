@@ -7,13 +7,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-class SistemaMarketplace {
+class SistemaMarketplace implements Serializable{
     public List<Usuario> usuarios;
     public Administrador administrador;
     private ExecutorService executorService;
@@ -27,7 +28,15 @@ class SistemaMarketplace {
     }
 
     public void iniciarSesion(String cedula, String contrasena) {
-        // Implementar lógica de inicio de sesión
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCedula().equals(cedula) && usuario.getContrasena().equals(contrasena)) {
+                // Iniciar sesión exitosa
+                System.out.println("Inicio de sesión exitoso");
+                return;
+            }
+        }
+        // Inicio de sesión fallida
+        System.out.println("Credenciales incorrectas");
     }
 
     public List<Usuario> getUsuarios() {
@@ -65,15 +74,12 @@ class SistemaMarketplace {
     }
 
     public void publicarProducto(Usuario vendedor, Producto producto)
-            throws UsuarioNoAutorizadoException, ProductoYaPublicadoException {
-        if (!usuarios.contains(vendedor)) {
-            throw new UsuarioNoAutorizadoException("El usuario no está autorizado para publicar productos");
-        }
-        if (vendedor.getProductos().contains(producto)) {
-            throw new ProductoYaPublicadoException("Este producto ya ha sido publicado");
-        }
-        vendedor.publicarProducto(producto);
-    }
+    throws ProductoYaPublicadoException {
+if (vendedor.getProductos().contains(producto)) {
+    throw new ProductoYaPublicadoException("Este producto ya ha sido publicado");
+}
+vendedor.publicarProducto(producto);
+}
 
     public void comentarProducto(Usuario comentador, Producto producto, String comentario)
             throws UsuarioNoAutorizadoException, ComentarioInvalidoException {

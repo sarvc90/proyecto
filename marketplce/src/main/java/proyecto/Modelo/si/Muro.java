@@ -1,10 +1,18 @@
 package proyecto.Modelo.si;
 
-public class Muro {
+import java.util.ArrayList;
+import java.util.List;
 
-    public void agregarPublicacion(Producto producto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregarPublicacion'");
+public class Muro {
+    private List<Producto> publicaciones;
+
+    public Muro() {
+        this.publicaciones = new ArrayList<>();
     }
 
+
+    public void agregarPublicacion(Producto producto) {
+        publicaciones.add(producto);
+    }
+    // Otros métodos de la clase Muro
 }

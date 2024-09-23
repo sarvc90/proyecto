@@ -4,7 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 
 class Administrador extends Persona {
-    public Administrador(String id, String nombre, String apellido, String cedula, String direccion, String contrasena) {
+    public Administrador(String id, String nombre, String apellido, String cedula, String direccion,
+            String contrasena) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -13,29 +14,51 @@ class Administrador extends Persona {
         this.contrasena = contrasena;
     }
 
-    public Usuario crearUsuario(String id, String nombre, String apellido, String cedula, String direccion, String contrasena) {
+    public Usuario crearUsuario(String id, String nombre, String apellido, String cedula, String direccion,
+            String contrasena) {
         return new Usuario(id, nombre, apellido, cedula, direccion, contrasena);
     }
 
     public void eliminarUsuario(Usuario usuario, List<Usuario> listaUsuarios) {
         listaUsuarios.remove(usuario);
     }
-    public String getNombre() { 
-        return nombre; 
+
+    public String getNombre() {
+        return nombre;
     }
+    
+private int getNumeroProductosPublicados(List<Usuario> usuarios) {
+    int count = 0;
+    for (Usuario usuario : usuarios) {
+        count += usuario.getProductos().size();
+    }
+    return count;
+}
+
+private int getNumeroComentariosRealizados(List<Usuario> usuarios) {
+    int count = 0;
+    for (Usuario usuario : usuarios) {
+        for (Producto producto : usuario.getProductos()) {
+            count += producto.getComentarios().size();
+        }
+    }
+    return count;
+}
+
+
     public String generarEstadisticas(List<Usuario> usuarios) {
         StringBuilder estadisticas = new StringBuilder();
         estadisticas.append("Estadísticas del sistema:\n");
-        
+
         // Cantidad total de usuarios
         estadisticas.append("Total de usuarios: ").append(usuarios.size()).append("\n");
-        
+
         // Total de productos publicados
         int totalProductos = usuarios.stream()
                 .mapToInt(u -> u.getProductos().size())
                 .sum();
         estadisticas.append("Total de productos publicados: ").append(totalProductos).append("\n");
-        
+
         // Usuario con más contactos
         Usuario usuarioMasContactos = usuarios.stream()
                 .max(Comparator.comparingInt(u -> u.getContactos().size()))
@@ -45,7 +68,7 @@ class Administrador extends Persona {
                     .append(usuarioMasContactos.getNombre())
                     .append(" (").append(usuarioMasContactos.getContactos().size()).append(" contactos)\n");
         }
-        
+
         // Producto con más "Me gusta"
         Producto productoMasGustado = usuarios.stream()
                 .flatMap(u -> u.getProductos().stream())
@@ -56,13 +79,7 @@ class Administrador extends Persona {
                     .append(productoMasGustado.getNombre())
                     .append(" (").append(productoMasGustado.getMeGusta().size()).append(" Me gusta)\n");
         }
-        
+
         return estadisticas.toString();
     }
 }
-
-
-
-
-
-

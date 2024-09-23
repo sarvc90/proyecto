@@ -36,12 +36,12 @@ class ServidorMarketplace {
         }
     }
 
-    private boolean autenticarUsuario(String cedula, String contrasena) {
+    boolean autenticarUsuario(String cedula, String contrasena) {
         // Implementar lógica de autenticación
         return false;
     }
 
-    private String generarReporteVendedores(LocalDateTime fecha) {
+    String generarReporteVendedores(LocalDateTime fecha) {
         // Implementar lógica para generar el reporte de vendedores que han publicado en
         // la fecha dada
         return "Reporte de vendedores para la fecha " + fecha;
@@ -61,7 +61,8 @@ class ServidorMarketplace {
     public void guardarDatos() {
         executorService.submit(() -> {
             try {
-                try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(sistema.ARCHIVO_SERIALIZADO))) {
+                try (ObjectOutputStream oos = new ObjectOutputStream(
+                        new FileOutputStream(sistema.ARCHIVO_SERIALIZADO))) {
                     oos.writeObject(sistema);
                 }
             } catch (IOException e) {
@@ -74,7 +75,7 @@ class ServidorMarketplace {
             }
         });
     }
-    
+
     public void cargarDatos() {
         executorService.submit(() -> {
             try {
@@ -93,6 +94,7 @@ class ServidorMarketplace {
             }
         });
     }
+
     public Usuario registrarUsuario(String id, String nombre, String apellido, String cedula, String direccion,
             String contrasena) throws UsuarioYaExisteException {
         if (sistema.getUsuarios().stream().anyMatch(u -> u.getCedula().equals(cedula))) {
@@ -104,10 +106,7 @@ class ServidorMarketplace {
     }
 
     public void publicarProducto(Usuario vendedor, Producto producto)
-            throws UsuarioNoAutorizadoException, ProductoYaPublicadoException {
-        if (!sistema.getUsuarios().contains(vendedor)) {
-            throw new UsuarioNoAutorizadoException("El usuario no está autorizado para publicar productos");
-        }
+            throws ProductoYaPublicadoException {
         if (vendedor.getProductos().contains(producto)) {
             throw new ProductoYaPublicadoException("Este producto ya ha sido publicado");
         }
@@ -149,7 +148,7 @@ class ServidorMarketplace {
                     boolean autenticado = autenticarUsuario(cedula, contrasena);
                     oos.writeObject(autenticado);
                     break;
-                    case "GUARDAR_DATOS":
+                case "GUARDAR_DATOS":
                     guardarDatos();
                     oos.writeObject("Datos guardados exitosamente");
                     break;
@@ -184,7 +183,7 @@ class ServidorMarketplace {
                         Producto producto = (Producto) ois.readObject();
                         sistema.publicarProducto(vendedor, producto);
                         oos.writeObject("Producto publicado exitosamente");
-                    } catch (UsuarioNoAutorizadoException | ProductoYaPublicadoException e) {
+                    } catch (ProductoYaPublicadoException e) {
                         oos.writeObject("Error: " + e.getMessage());
                     }
                     break;

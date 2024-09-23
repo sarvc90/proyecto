@@ -43,6 +43,9 @@ class Producto implements Serializable {
     }
 
     // Getters y setters
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
     public Usuario getVendedor() { return vendedor; }
     public List<Usuario> getMeGusta() { return meGusta; }
     public String getNombre() { return nombre; }
