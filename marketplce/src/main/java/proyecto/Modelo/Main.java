@@ -1,8 +1,11 @@
+
+
 package proyecto.Modelo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,14 +29,49 @@ public class Main {
         // Mostrar mensaje de éxito
         System.out.println("Archivos generados con éxito");
 
-        // Print vendedores
-        for (Vendedor vendedor : vendedores) {
-            System.out.println(vendedor.toString());
+        // Serializar listas a binario
+        utilidades.serializarObjeto(vendedores, "vendedores.bin", false);
+        utilidades.serializarObjeto(productos, "productos.bin", false);
+
+        // Serializar listas a XML
+        utilidades.serializarObjeto(vendedores, "vendedores.xml", true);
+        utilidades.serializarObjeto(productos, "productos.xml", true);
+
+        // Deserializar listas desde binario
+        List<Vendedor> deserializedVendedoresBin = (List<Vendedor>) utilidades.deserializarObjeto("vendedores.bin", false);
+        List<Producto> deserializedProductosBin = (List<Producto>) utilidades.deserializarObjeto("productos.bin", false);
+
+        // Deserializar listas desde XML
+        List<Vendedor> deserializedVendedoresXML = (List<Vendedor>) utilidades.deserializarObjeto("vendedores.xml", true);
+        List<Producto> deserializedProductosXML = (List<Producto>) utilidades.deserializarObjeto("productos.xml", true);
+
+        // Print vendedores deserializados desde binario
+        System.out.println("Vendedores deserializados desde binario:");
+        for (Vendedor vendedor : deserializedVendedoresBin) {
+            System.out.println(vendedor);
         }
 
-        // Print productos
-        for (Producto producto : productos) {
-            System.out.println(producto.toString());
+        // Print productos deserializados desde binario
+        System.out.println("Productos deserializados desde binario:");
+        for (Producto producto : deserializedProductosBin) {
+            System.out.println(producto);
         }
+
+        // Print vendedores deserializados desde XML
+        System.out.println("Vendedores deserializados desde XML:");
+        for (Vendedor vendedor : deserializedVendedoresXML) {
+            System.out.println(vendedor);
+        }
+
+        // Print productos deserializados desde XML
+        System.out.println("Productos deserializados desde XML:");
+        for (Producto producto : deserializedProductosXML) {
+            System.out.println(producto);
+        }
+
+        // Probar logger
+        utilidades.logInfo("Prueba de mensaje INFO");
+        utilidades.logWarning("Prueba de mensaje WARNING");
+        utilidades.logSevere("Prueba de mensaje SEVERE");
     }
 }

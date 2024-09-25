@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -53,10 +54,18 @@ public class PrimaryController {
                 utilidades.escribirLog(utilidades.getMensaje("login.error"), Level.WARNING);
                 // Mostrar mensaje de error
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(utilidades.getMensaje("login.boton"));
+            alert.setContentText(utilidades.getMensaje("login.exito"));
+            alert.showAndWait();
         });
 
         registerButton.setOnAction(e -> {
             try {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle(utilidades.getMensaje("login.registrarse"));
+                alert.setContentText(utilidades.getMensaje("login.exito"));
+                alert.showAndWait();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("registro_vendedor.fxml"));
                 Parent root = fxmlLoader.load();
                 Stage stage = new Stage();
@@ -75,6 +84,10 @@ public class PrimaryController {
                 utilidades.setLocale(new Locale("es", "ES"));
             }
             updateTexts();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(utilidades.getMensaje("login.lenguaje"));
+            alert.setContentText(utilidades.getMensaje("login.exito"));
+            alert.showAndWait();
         });
     }
     
