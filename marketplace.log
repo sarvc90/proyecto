@@ -72,3 +72,13 @@ sept 24, 2024 8:02:55 P. M. proyecto.Modelo.Utilidades escribirLog
 GRAVE: Error al abrir la ventana de registro: 
 /C:/Users/sccva/OneDrive/Documentos/GitHub/proyecto/marketplce/target/classes/proyecto/registro_vendedor.fxml:28
 
+sept 27, 2024 8:48:17 A. M. proyecto.Modelo.Utilidades escribirLog
+INFORMACIÓN: Objeto serializado exitosamente a vendedores.bin
+sept 27, 2024 8:48:17 A. M. proyecto.Modelo.Utilidades escribirLog
+GRAVE: Error al serializar el objeto: productos.bin
+sept 27, 2024 8:48:17 A. M. proyecto.Modelo.Utilidades escribirLog
+INFORMACIÓN: Objeto serializado exitosamente a vendedores.xml
+sept 27, 2024 8:48:17 A. M. proyecto.Modelo.Utilidades escribirLog
+INFORMACIÓN: Objeto serializado exitosamente a productos.xml
+sept 27, 2024 8:48:17 A. M. proyecto.Modelo.Utilidades escribirLog
+GRAVE: Error al deserializar el objeto: productos.bin
