@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,18 +14,24 @@ public class Producto {
     private String id;
     private String nombre;
     private String descripcion;
-    private String fechaPublicacion;
+    private LocalDateTime fechaPublicacion;
     private File imagen;
+    private int precio;
+    private int meGustas;
+    private List<Comentario> comentarios; 
+
 
     // Constructor
-// Constructor
-public Producto(String id, String nombre, String descripcion, String fechaPublicacion, File imagen) {
-    this.id = id;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.fechaPublicacion = fechaPublicacion;
-    this.imagen=imagen;
-}
+    public Producto(String id, String nombre, String descripcion, String fechaPublicacion, File imagen, int precio, int meGustas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaPublicacion = LocalDateTime.parse(fechaPublicacion);
+        this.imagen = imagen;
+        this.precio = precio;
+        this.meGustas = meGustas;
+        this.comentarios = new ArrayList<>();
+    }
 
     // Métodos get
     public String getId() {
@@ -39,13 +46,14 @@ public Producto(String id, String nombre, String descripcion, String fechaPublic
         return descripcion;
     }
 
-    public String getFechaPublicacion() {
+    public LocalDateTime getFechaPublicacion() {
         return fechaPublicacion;
     }
+
     public File getImagen() {
         return imagen;
     }
-    
+
     public void setImagen(File imagen) {
         this.imagen = imagen;
     }
@@ -63,8 +71,16 @@ public Producto(String id, String nombre, String descripcion, String fechaPublic
         this.descripcion = descripcion;
     }
 
-    public void setFechaPublicacion(String fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void agregarComentario(){
+        //Lógica para agregar comentario
+    }
+
+    public void darMeGusto(){
+
+    }
+
+    public void comprar(){
+        
     }
 
     // Método toString

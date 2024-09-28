@@ -1,2 +1,0 @@
-Vendedor{nombres='Juan', apellidos='Pérez', cedula='123456', direccion='Calle 1', productos=[P001, P002], redDeContactos=[Contacto 1, Contacto 2]}
-Vendedor{nombres='María', apellidos='González', cedula='789012', direccion='Calle 2', productos=[P003, P004], redDeContactos=[Contacto 3, Contacto 4]}

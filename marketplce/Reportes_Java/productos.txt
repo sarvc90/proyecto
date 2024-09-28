@@ -1,4 +1,0 @@
-P001,Producto 1,Descripción del producto 1,2022-01-01
-P002,Producto 2,Descripción del producto 2,2022-01-02
-P003,Producto 3,Descripción del producto 3,2022-01-03
-P004,Producto 4,Descripción del producto 4,2022-01-04
