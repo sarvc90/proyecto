@@ -14,14 +14,16 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private String fechaPublicacion;
+    private File imagen;
 
     // Constructor
 // Constructor
-public Producto(String id, String nombre, String descripcion, String fechaPublicacion) {
+public Producto(String id, String nombre, String descripcion, String fechaPublicacion, File imagen) {
     this.id = id;
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.fechaPublicacion = fechaPublicacion;
+    this.imagen=imagen;
 }
 
     // Métodos get
@@ -39,6 +41,13 @@ public Producto(String id, String nombre, String descripcion, String fechaPublic
 
     public String getFechaPublicacion() {
         return fechaPublicacion;
+    }
+    public File getImagen() {
+        return imagen;
+    }
+    
+    public void setImagen(File imagen) {
+        this.imagen = imagen;
     }
 
     // Métodos set
